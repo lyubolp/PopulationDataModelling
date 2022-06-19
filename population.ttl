@@ -7,17 +7,18 @@
 @prefix ex: <http://example.org/> .
 
 <НСИ> a schema:GovernmentOrganization ;
-    schema:name "Национален статистически институт"@bg .
+    schema:name "Национален статистически институт"@bg ;
+    schema:name "National statistical institute"@en .
 
 <НСИ/cube> a cube:Cube, schema:Dataset ;
-    schema:name "Насеелние на България"@bg ;
-    schema:description "Население на България по области и години(2016-2021)."@bg ;
-    schema:publisher <org/FMITeam>;
+    schema:name "Населние на България"@bg ;
+    schema:name "Population of Bulgaria"@en ;
+    schema:description "Население на България по райони и години."@bg ;
+    schema:description "Population of Bulgaria by region and year"@bg ;
     schema:creator <org/FMITeam> ;
-    cube:observationSet <cube/observation> ;
-    cube:observationConstraint <cube/constraint> ;
-    schema:dateCreated "2022-06-18"^^xsd:date ; # The date on which the CreativeWork was created or the item was added to a DataFeed.
-
+    cube:observationSet <НСИ/cube/observation> ;
+    cube:observationConstraint <НСИ/cube/constraint> ;
+    schema:dateCreated "2022-06-18"^^xsd:date .
 
 # examples:
 
@@ -38,3 +39,6 @@
     :умрелиЖени 1234 ;
     :общоМъже 1234 ;
     :общоЖени 1234 .
+
+<org/FMITeam> а schema:Organization ;
+    schema:name "FMI Team"@bg ;
