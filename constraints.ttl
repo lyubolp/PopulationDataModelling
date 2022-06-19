@@ -1,0 +1,79 @@
+@base <http://example.org/rdf-cube-schema-example/> .
+
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix cube: <https://cube.link/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/>.
+@prefix ex: <http://example.org/> .
+
+<НСИ/cube/constraint> a sh:NodeShape, cube:Constraint ;
+  sh:closed true ;
+  sh:property [
+    sh:path rdf:type ;
+    sh:nodeKind sh:IRI ;
+    sh:in ( cube:Observation )
+  ], [
+    sh:path cube:observedBy ;
+    sh:nodeKind sh:IRI ;
+    sh:in ( <НСИ> )
+  ], [
+    schema:name "Родени момчета"@bg, "Born boys"@en ;
+    sh:path :родениМомчета ;
+    sh:datatype xsd:integer ;
+    sh:maxCount 1 ;
+    sh:minInclusive 0 ;
+    qudt:scaleType qudt:RatioScale ;
+  ], [
+    schema:name "Родени момичета"@bg, "Born girls"@en ;
+    sh:path :родениМомчета ;
+    sh:datatype xsd:integer ;
+    sh:maxCount 1 ;
+    sh:minInclusive 0 ;
+    qudt:scaleType qudt:RatioScale ;
+  ], [
+    schema:name "Умрели мъже"@bg, "Died men"@en ;
+    sh:path :умрелиМъже ;
+    sh:datatype xsd:integer ;
+    sh:maxCount 1 ;
+    sh:minInclusive 0 ;
+    qudt:scaleType qudt:RatioScale ;
+  ], [
+    schema:name "Умрели жени"@bg, "Died women"@en ;
+    sh:path :умрелиЖени ;
+    sh:datatype xsd:integer ;
+    sh:maxCount 1 ;
+    sh:minInclusive 0 ;
+    qudt:scaleType qudt:RatioScale ;
+  ], [
+    schema:name "Общо мъже"@bg, "Total men"@en ;
+    sh:path :общоМъже ;
+    sh:datatype xsd:integer ;
+    sh:maxCount 1 ;
+    sh:minInclusive 0 ;
+    qudt:scaleType qudt:RatioScale ;
+  ], [
+    schema:name "Общо жени"@bg, "Total women"@en ;
+    sh:path :общоЖени ;
+    sh:datatype xsd:integer ;
+    sh:maxCount 1 ;
+    sh:minInclusive 0 ;
+    qudt:scaleType qudt:RatioScale ;
+  ], [
+    schema:name "Година"@bg, "Year"@en 
+    sh:path :година ;
+    sh:datatype xsd:gYear ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:minInclusive 2016 ;
+  ], [
+    schema:name "Статистически район"@bg, "Statistical area"@en ;
+    sh:path :район ;
+    sh:maxCount 1 ;
+    sh:Class schema:Place ;
+    sh:nodeKind sh:IRI ;
+    sh:in ( <Видин> <Враца> <Ловеч> <Монтана> <Плевен> <ВеликоТърново> <Габрово> <Разград> <Русе> <Силистра> <Варна> <Добрич> <Търговище> <Шумен> <Бургас> <Сливен> <СтараЗагора> <Ямбол> <Благоевград> <Кюстендил> <Перник> <София> <СофияСтолица> <Кърджали> <Пазарджик> <Пловдив> <Смолян> <Хасково>)
+    qudt:scaleType qudt:RatioScale ;
+  ] .
+  
