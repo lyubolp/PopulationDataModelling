@@ -1,0 +1,44 @@
+@base <http://example.org/rdf-cube-schema-example/> .
+
+@prefix cube: <https://cube.link/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/>.
+@prefix ex: <http://example.org/> .
+
+<НСИ> a schema:GovernmentOrganization ;
+    schema:name "Национален статистически институт"@bg ;
+    schema:name "National statistical institute"@en .
+
+<НСИ/cube> a cube:Cube, schema:Dataset ;
+    schema:name "Населние на България"@bg ;
+    schema:name "Population of Bulgaria"@en ;
+    schema:description "Население на България по райони и години."@bg ;
+    schema:description "Population of Bulgaria by region and year"@bg ;
+    schema:creator <org/FMITeam> ;
+    cube:observationSet <НСИ/cube/observation> ;
+    cube:observationConstraint <НСИ/cube/constraint> ;
+    schema:dateCreated "2022-06-18"^^xsd:date .
+
+# examples:
+
+<НСИ/cube/observation> a cube:ObservationSet ;
+    cube:observation <НСИ/cube/observation/2016Видин>,
+        <НСИ/cube/observation/2016Враца>,
+        <НСИ/cube/observation/2016Ловеч>,
+        ...
+        <НСИ/cube/observation/2022Хасково> .
+
+<НСИ/cube/observation/2016Видин> a cube:Observation ;
+    cube:observedBy <НСИ> ;
+    :година "2016"^xsd:gYear ;
+    :район <Видин> ;
+    :родениМомчета 1234 ;
+    :родениМомичета 1234 ;
+    :умрелиМъже 1234 ;
+    :умрелиЖени 1234 ;
+    :общоМъже 1234 ;
+    :общоЖени 1234 .
+
+<org/FMITeam> а schema:Organization ;
+    schema:name "FMI Team"@bg ;
